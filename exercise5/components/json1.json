@@ -1,0 +1,17 @@
+{
+  "navigation": {},
+  "route": {
+    "key": "History-EA0qHddswyULookPzY6U6",
+    "name": "History",
+    "params": {
+      "history": [
+        {
+          "key": "4 + 55 = 59"
+        },
+        {
+          "key": "4 - 55 = -51"
+        }
+      ]
+    }
+  }
+}
