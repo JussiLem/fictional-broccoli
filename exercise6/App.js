@@ -38,7 +38,7 @@ export default () => {
     }
   }
 
-  const checkHighScore = async () => {
+  const checkAndSetHighScore = async () => {
     const highScore = await retrieveHighScore()
     if (count < highScore) {
       setHighScore(count)
@@ -52,7 +52,7 @@ export default () => {
     } else if (guess > raffle) {
       setResult(`Your guess ${guess} is too high`)
     } else {
-      checkHighScore()
+      checkAndSetHighScore()
       Alert.alert(`You guessed the number in ${count} guesses`)
     }
   };
