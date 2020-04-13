@@ -1,11 +1,49 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  Keyboard,
+  SafeAreaView,
+  FlatList,
+  Image,
+  View,
+  TextInput,
+  Button
+} from 'react-native';
 
-export default function App() {
+export default () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [keyword, setKeyword] = useState('')
+  const getRecipesFromApi = async () => await fetch(`http://www.recipepuppy.com/api/?i=${keyword}`)
+    .then((response) => response.json())
+    .then((json) => setData(json.results))
+    .catch((error) => {
+      console.error(error);
+    });
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <SafeAreaView style={styles.container} behavior={'padding'} enabled>
+      <FlatList
+        style={styles.list}
+        data={data}
+        keyExtractor={({ id }) => id}
+        renderItem={({item}) =>
+          <View>
+            <Text>{item.title}</Text>
+            <Image style={styles.img}
+                   source={{uri: item.thumbnail}}/>
+          </View>
+        }/>
+      <TextInput
+        style={styles.textInput}
+        onChangeText={(keyword) => setKeyword(keyword)}
+      />
+      <View style={styles.buttons}>
+        <Button onPress={getRecipesFromApi} title="Find"/>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -15,5 +53,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  img: {
+    width: 70,
+    height: 70
+  },
+  list: {
+    marginTop: 50,
+    paddingVertical: 4,
+    margin: 5
+  },
+  textInput: {
+    borderBottomWidth: 3,
+    marginVertical: 10,
+    borderColor: 'black',
+    width: 200,
+  },
+
+  buttons: {
+    marginBottom: 50
   },
 });
