@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
-  Keyboard,
   SafeAreaView,
   FlatList,
   Image,
@@ -12,16 +11,12 @@ import {
 } from 'react-native';
 
 export default () => {
-  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState('')
   const getRecipesFromApi = async () => await fetch(`http://www.recipepuppy.com/api/?i=${keyword}`)
-    .then((response) => response.json())
-    .then((json) => setData(json.results))
-    .catch((error) => {
-      console.error(error);
-    });
-
+    .then(response => response.json())
+    .then(json => setData(json.results))
+    .catch(error => console.error(error));
 
   return (
     <SafeAreaView style={styles.container} behavior={'padding'} enabled>
