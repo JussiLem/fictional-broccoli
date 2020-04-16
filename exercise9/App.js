@@ -3,12 +3,11 @@ import {StyleSheet, View, TextInput, Button, Dimensions} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import Geocoder from 'react-native-geocoding';
 
-//AIzaSyD6gzrSIY-oYtmvxBjCDgm6wzQpSinHCiQ
 export default () => {
   const [lat, setLat] = useState(60.1098678)
   const [lng, setLng] = useState(24.7385121)
   const [address, setAddress] = useState('')
-  Geocoder.init('AIzaSyD6gzrSIY-oYtmvxBjCDgm6wzQpSinHCiQ', {language: "fi"})
+  Geocoder.init('UseYourOwnKey', {language: "fi"})
   const findLocation = async () => {
     Geocoder.from(address)
       .then(json => {
