@@ -20,15 +20,12 @@ export default () => {
     fetchRates()
   }, [])
 
-  const fetchRates = async () => await fetch(`http://data.fixer.io/api/latest?access_key=a3166e817a2c2119804a1ce2e9d241c3&format=1`)
+  const fetchRates = async () => await fetch(`http://data.fixer.io/api/latest?access_key=ACCESS_KEY&format=1`)
     .then(response => response.json())
     .then(json => setRates(json.rates))
     .catch(e => console.error(e))
 
-  const converter = () => {
-    setConverted((Number(amount) / rate).toFixed(2))
-    Keyboard.dismiss()
-  }
+  const converter = () => setConverted((Number(amount) / rate).toFixed(2))
 
   return (
     <SafeAreaView style={styles.container}>
