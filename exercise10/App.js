@@ -19,7 +19,6 @@ export default () => {
 
   const findRestaurants = async () => {
     const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=1000&type=restaurant&key=GoogleAPiKey`
-    console.log(url)
     await fetch(url)
       .then(response => response.json())
       .then(json => {
