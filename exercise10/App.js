@@ -23,7 +23,6 @@ export default () => {
     await fetch(url)
       .then(response => response.json())
       .then(json => {
-        console.log(json.results)
         setRestaurants(json.results)
       })
       .catch((title, message) => Alert.alert("Something went wrong", message))
