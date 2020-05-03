@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Geocoder from 'react-native-geocoding';
 
-Geocoder.init('AIzaSyA7oTvzWhdDgMQgHvXnozz6MK2KpCObT7U');
+Geocoder.init('ApiKey');
 
 export default function Map({route, navigation}) {
 

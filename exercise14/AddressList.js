@@ -39,8 +39,6 @@ export default function AddressList ({route, navigation}) {
     }, null, updateList);
   }
 
-  // const {navigate} = navigation;
-
   return (
     <View style={styles.container}>
       <View style={{marginTop: 50}}>
