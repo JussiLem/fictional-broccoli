@@ -1,19 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import AddressList from "./AddressList";
+import Map from "./Map";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="AddressList">
+      <Stack.Screen name="AddressList" component={AddressList}/>
+      <Stack.Screen name="Map" component={Map}/>
+    </Stack.Navigator>
+  </NavigationContainer>
+)
