@@ -29,8 +29,6 @@ export default () => {
       tx.executeSql('SELECT * FROM shoplist;', [], (_, { rows}) =>
         setData(rows._array)
       );
-      console.log(`got ${JSON.stringify(data)}`)
-
     });
   }
   const saveItem = () => {
